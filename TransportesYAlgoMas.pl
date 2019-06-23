@@ -40,6 +40,8 @@ costoProduccion(madera,5).
 % EL PRECIO QUE PAGA ES UNITARIO POR PRODUCTO, NO SE TIENE EN CUENTA LA CANTIDAD A COMPRAR
 
 cuantoPaga(CiudadCompradora,CiudadVendedora,Producto,CostoTotal) :-
+    ciudad(CiudadCompradora,_),
+    ciudad(CiudadVendedora,_),
     costoProduccion(Producto,CostoProduccion),
     transaccion(CiudadCompradora,CiudadVendedora,Producto,_,Transporte),
     ruta(CiudadCompradora,CiudadVendedora,Distancia),
@@ -55,3 +57,15 @@ costoTransporte(CostoProduccion,camion(Marca),_,CostoTransporte) :-
     CostoTransporte is (CostoProduccion * 10).
 costoTransporte(CostoProduccion,avion,_,CostoTransporte) :-
     CostoTransporte is (CostoProduccion * 1000).
+
+% PUNTO 2
+
+saldoComercial(Ciudad1,Ciudad2,Saldo) :-
+    ciudad(Ciudad1,_),
+    ciudad(Ciudad2,_),
+    Ciudad1 \= Ciudad2,
+    findall(Costo1,cuantoPaga(Ciudad2,Ciudad1,Producto,Costo1),ListaGanancia),
+    sumlist(ListaGanancia,Ganancia),
+    findall(Costo2,cuantoPaga(Ciudad1,Ciudad2,Producto,Costo2),ListaInversion),
+    sumlist(ListaInversion,Inversion),
+    Saldo is (Ganancia - Inversion).
