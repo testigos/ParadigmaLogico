@@ -16,4 +16,5 @@ Elementos de Diseño: https://docs.google.com/document/d/1eWnjBoiQTRJKx4THhmPnGY
 
 TPs hechos:
 
-Parciales hechos:
+Parciales hechos: 
+1) Transporte https://docs.google.com/document/d/1CiUO780HyMeJfs5HzP9qlGfnyFPkG_mqKeSXzfXLT0Q/edit
