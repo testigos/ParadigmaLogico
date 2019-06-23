@@ -7,7 +7,7 @@ ciudad(sanSalvador,450000).
 ciudad(iguazu,300000).
 ciudad(alumine,5000).
 
-% ruta(Ciudad1,Ciudad2,Distancia)
+% ruta(CiudadA,CiudadB,Distancia)
 ruta(buenosAires,cordoba,600).
 ruta(cordoba,buenosAires,600).
 ruta(buenosAires,laPlata,300).
@@ -62,10 +62,30 @@ saldoComercial(Ciudad1,Ciudad2,Saldo) :-
     ciudad(Ciudad1,_),
     ciudad(Ciudad2,_),
     Ciudad1 \= Ciudad2,
-    findall(Costo1,cuantoPaga(Ciudad2,Ciudad1,Producto,Costo1),ListaGanancia),
+    findall(Costo1,
+            cuantoPaga(Ciudad2,Ciudad1,Producto,Costo1),
+            ListaGanancia),
     sumlist(ListaGanancia,Ganancia),
-    findall(Costo2,cuantoPaga(Ciudad1,Ciudad2,Producto,Costo2),ListaInversion),
+    findall(Costo2,
+            cuantoPaga(Ciudad1,Ciudad2,Producto,Costo2),
+            ListaInversion),
     sumlist(ListaInversion,Inversion),
     Saldo is (Ganancia - Inversion).
 
 % PUNTO 3
+
+ciudadFantasma(Ciudad) :-
+    ciudad(Ciudad,Habitantes),
+    not(ruta(Ciudad,_,_)),
+    not(ruta(_,Ciudad,_)),
+    Habitantes < 1000000.
+
+ciudadTransito(Ciudad) :-
+    ciudad(Ciudad,_),
+    forall(transaccion(_,Ciudad,Producto,_,_),
+            transaccion(Ciudad,_,Producto,_,_)).
+
+ciudadMonopolica(Ciudad) :-
+    transaccion(_,Ciudad,Producto,_,_),
+    forall((ciudad(Ciudad2,_),Ciudad \= Ciudad2),
+            not(transaccion(_,Ciudad2,Producto,_,_))).
