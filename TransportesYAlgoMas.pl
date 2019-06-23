@@ -19,21 +19,26 @@ ruta(sanSalvador,cordoba,600).
 ruta(laPlata,rosario,700).
 ruta(iguazu,sanSalvador,400).
 
+ruta(Ciudad1,Ciudad2,Distancia) :-
+    ruta(Ciudad2,Ciudad1,Distancia)
+
 % transaccion(CiudadCompradora,CiudadVendedora,Producto,CantProducto,Transporte)
 transaccion(buenosAires,cordoba,harina,5000,avion).
 transaccion(cordoba,buenosAires,yerba,5000,avion).
-%transaccion(laPlata,rosario,venta(madera,4000),tren(5,900)).
 transaccion(iguazu,sanSalvador,yerba,9000,camion(mercedes)).
 transaccion(sanSalvador,cordoba,madera,8000,avion).
 transaccion(cordoba,rosario,auto,100,tren(4,700)).
 transaccion(rosario,buenosAires,auto,100,tren(4,700)).
 transaccion(iguazu,buenosAires,yerba,10000,camion(bmw)).
+transaccion(sanSalvador,rosario,acero,500,avion).
+transaccion(rosario,laPlata,acero,500,avion).
 
 % costoProduccion(Producto,Costo)
 costoProduccion(harina,4).
 costoProduccion(yerba,1).
 costoProduccion(auto,100000).
 costoProduccion(madera,5).
+costoProduccion(acero,100).
 
 % EJERCICIO 1
 
@@ -81,7 +86,7 @@ ciudadFantasma(Ciudad) :-
     Habitantes < 1000000.
 
 ciudadTransito(Ciudad) :-
-    ciudad(Ciudad,_),
+    transaccion(_,Ciudad,_,_,_),
     forall(transaccion(_,Ciudad,Producto,_,_),
             transaccion(Ciudad,_,Producto,_,_)).
 
@@ -89,3 +94,6 @@ ciudadMonopolica(Ciudad) :-
     transaccion(_,Ciudad,Producto,_,_),
     forall((ciudad(Ciudad2,_),Ciudad \= Ciudad2),
             not(transaccion(_,Ciudad2,Producto,_,_))).
+
+% PUNTO 4
+
