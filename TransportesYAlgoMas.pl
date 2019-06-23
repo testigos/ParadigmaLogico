@@ -18,9 +18,16 @@ ruta(cordoba,rosario,200).
 ruta(sanSalvador,cordoba,600).
 ruta(laPlata,rosario,700).
 ruta(iguazu,sanSalvador,400).
+ruta(cordoba,sanSalvador,600).
+ruta(buenosAires,rawson,600).
+ruta(rawson,sanSalvador,500).
 
+/*
 ruta(Ciudad1,Ciudad2,Distancia) :-
-    ruta(Ciudad2,Ciudad1,Distancia)
+    Ciudad1 \= Ciudad2,
+    ruta(Ciudad2,Ciudad1,Distancia).
+ruta(Ciudad,Ciudad,0).
+*/
 
 % transaccion(CiudadCompradora,CiudadVendedora,Producto,CantProducto,Transporte)
 transaccion(buenosAires,cordoba,harina,5000,avion).
@@ -97,3 +104,11 @@ ciudadMonopolica(Ciudad) :-
 
 % PUNTO 4
 
+distancia(Ciudad1,Ciudad2,Distancia) :-
+    ruta(Ciudad1,Ciudad2,Distancia).
+distancia(Ciudad1,Ciudad2,Distancia) :-
+    ruta(CiudadMedia,Ciudad2,Distancia2),
+    distancia(Ciudad1,CiudadMedia,Distancia1),
+    Distancia is (Distancia1 + Distancia2).
+
+% PUNTO 5
