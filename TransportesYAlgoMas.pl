@@ -40,8 +40,6 @@ costoProduccion(madera,5).
 % EL PRECIO QUE PAGA ES UNITARIO POR PRODUCTO, NO SE TIENE EN CUENTA LA CANTIDAD A COMPRAR
 
 cuantoPaga(CiudadCompradora,CiudadVendedora,Producto,CostoTotal) :-
-    ciudad(CiudadCompradora,_),
-    ciudad(CiudadVendedora,_),
     costoProduccion(Producto,CostoProduccion),
     transaccion(CiudadCompradora,CiudadVendedora,Producto,_,Transporte),
     ruta(CiudadCompradora,CiudadVendedora,Distancia),
@@ -69,3 +67,5 @@ saldoComercial(Ciudad1,Ciudad2,Saldo) :-
     findall(Costo2,cuantoPaga(Ciudad1,Ciudad2,Producto,Costo2),ListaInversion),
     sumlist(ListaInversion,Inversion),
     Saldo is (Ganancia - Inversion).
+
+% PUNTO 3
