@@ -16,5 +16,20 @@ Elementos de Diseño: https://docs.google.com/document/d/1eWnjBoiQTRJKx4THhmPnGY
 
 TPs hechos:
 
-Parciales hechos: 
+Parciales: 
+
 1) Transporte https://docs.google.com/document/d/1CiUO780HyMeJfs5HzP9qlGfnyFPkG_mqKeSXzfXLT0Q/edit
+
+2) https://docs.google.com/document/d/1GY_SXqftocWf2jEUehfjE1VPwD726GUojlSqXV8zEug/mobilebasic#
+
+3) https://docs.google.com/document/d/14gV9kXSAZmUjH8P6IQ2on19kJtuSwlHIDhmGVVNot5k/mobilebasic
+
+4) https://docs.google.com/document/d/1h7U53NguCvSsGXilZOE0FDNYFibQqtX2kcgErCit19o/mobilebasic 
+
+5) https://docs.google.com/document/d/1wyoB1Wf5V4m__Ro5IuY1w4Q5vv9Xu3LeXJsji2DZsrc/mobilebasic
+
+6) https://docs.google.com/document/d/1eeN6Jzub6yJoC0eJecwSDdTXj-5-lXCYCCvNWvilAQk/mobilebasic
+
+7) https://docs.google.com/document/d/1m3rnd3Un987VSmVqhgXHH2BL5e__8phQfuUbzlgl-4o/mobilebasic
+
+8) https://docs.google.com/document/d/1d-XgMzI5mL2VdLZNkkqrebjwyVDLA0ExilAA08b2QBU/mobilebasic
