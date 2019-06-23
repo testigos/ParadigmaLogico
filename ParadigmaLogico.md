@@ -18,9 +18,7 @@ TPs hechos:
 
 Parciales: 
 
-1) Transporte https://docs.google.com/document/d/1CiUO780HyMeJfs5HzP9qlGfnyFPkG_mqKeSXzfXLT0Q/edit
-
-99)             
+1) Transporte (Dificultad: 8) https://docs.google.com/document/d/1CiUO780HyMeJfs5HzP9qlGfnyFPkG_mqKeSXzfXLT0Q/edit             
 
 2) https://docs.google.com/document/d/1GY_SXqftocWf2jEUehfjE1VPwD726GUojlSqXV8zEug/mobilebasic#
 
@@ -35,3 +33,5 @@ Parciales:
 7) https://docs.google.com/document/d/1m3rnd3Un987VSmVqhgXHH2BL5e__8phQfuUbzlgl-4o/mobilebasic
 
 8) https://docs.google.com/document/d/1d-XgMzI5mL2VdLZNkkqrebjwyVDLA0ExilAA08b2QBU/mobilebasic
+
+9) Furia (Dificultad: ) https://docs.google.com/document/d/1omdRN-eP55lkusU-iT43EhN_whK885tgFrJBE1zUwfQ/mobilebasic
