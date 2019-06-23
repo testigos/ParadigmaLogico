@@ -1,52 +1,3 @@
-% ciudad(Ciudad,Habitantes).
-ciudad(buenosAires,1000000). 
-ciudad(cordoba,800000).
-ciudad(laPlata,750000).
-ciudad(rosario,500000).
-ciudad(sanSalvador,450000).
-ciudad(iguazu,300000).
-ciudad(alumine,5000).
-
-% ruta(CiudadA,CiudadB,Distancia)
-ruta(buenosAires,cordoba,600).
-ruta(cordoba,buenosAires,600).
-ruta(buenosAires,laPlata,300).
-ruta(buenosAires,rosario,700).
-ruta(rosario,buenosAires,700).
-ruta(iguazu,buenosAires,1000).
-ruta(cordoba,rosario,200).
-ruta(sanSalvador,cordoba,600).
-ruta(laPlata,rosario,700).
-ruta(iguazu,sanSalvador,400).
-ruta(cordoba,sanSalvador,600).
-ruta(buenosAires,rawson,600).
-ruta(rawson,sanSalvador,500).
-
-/*
-ruta(Ciudad1,Ciudad2,Distancia) :-
-    Ciudad1 \= Ciudad2,
-    ruta(Ciudad2,Ciudad1,Distancia).
-ruta(Ciudad,Ciudad,0).
-*/
-
-% transaccion(CiudadCompradora,CiudadVendedora,Producto,CantProducto,Transporte)
-transaccion(buenosAires,cordoba,harina,5000,avion).
-transaccion(cordoba,buenosAires,yerba,5000,avion).
-transaccion(iguazu,sanSalvador,yerba,9000,camion(mercedes)).
-transaccion(sanSalvador,cordoba,madera,8000,avion).
-transaccion(cordoba,rosario,auto,100,tren(4,700)).
-transaccion(rosario,buenosAires,auto,100,tren(4,700)).
-transaccion(iguazu,buenosAires,yerba,10000,camion(bmw)).
-transaccion(sanSalvador,rosario,acero,500,avion).
-transaccion(rosario,laPlata,acero,500,avion).
-
-% costoProduccion(Producto,Costo)
-costoProduccion(harina,4).
-costoProduccion(yerba,1).
-costoProduccion(auto,100000).
-costoProduccion(madera,5).
-costoProduccion(acero,100).
-
 % EJERCICIO 1
 
 % EL PRECIO QUE PAGA ES UNITARIO POR PRODUCTO, NO SE TIENE EN CUENTA LA CANTIDAD A COMPRAR
@@ -112,3 +63,64 @@ distancia(Ciudad1,Ciudad2,Distancia) :-
     Distancia is (Distancia1 + Distancia2).
 
 % PUNTO 5
+
+% Es una boludez, que lo agregue otro.
+
+% PUNTO 6
+
+% ciudad(Ciudad,Habitantes).
+ciudad(buenosAires,1000000). 
+ciudad(cordoba,800000).
+ciudad(laPlata,750000).
+ciudad(rosario,500000).
+ciudad(sanSalvador,450000).
+ciudad(iguazu,300000).
+ciudad(alumine,5000).
+
+% ruta(CiudadA,CiudadB,Distancia)
+ruta(buenosAires,cordoba,600).
+ruta(cordoba,buenosAires,600).
+ruta(buenosAires,laPlata,300).
+ruta(buenosAires,rosario,700).
+ruta(rosario,buenosAires,700).
+ruta(iguazu,buenosAires,1000).
+ruta(cordoba,rosario,200).
+ruta(sanSalvador,cordoba,600).
+ruta(laPlata,rosario,700).
+ruta(iguazu,sanSalvador,400).
+ruta(cordoba,sanSalvador,600).
+ruta(buenosAires,rawson,600).
+ruta(rawson,sanSalvador,500).
+
+/*
+ruta(Ciudad1,Ciudad2,Distancia) :-
+    Ciudad1 \= Ciudad2,
+    ruta(Ciudad2,Ciudad1,Distancia).
+ruta(Ciudad,Ciudad,0).
+*/
+
+% transaccion(CiudadCompradora,CiudadVendedora,Producto,CantProducto,Transporte)
+transaccion(buenosAires,cordoba,harina,5000,avion).
+transaccion(cordoba,buenosAires,yerba,5000,avion).
+transaccion(iguazu,sanSalvador,yerba,9000,camion(mercedes)).
+transaccion(sanSalvador,cordoba,madera,8000,avion).
+transaccion(cordoba,rosario,auto,100,tren(4,700)).
+transaccion(rosario,buenosAires,auto,100,tren(4,700)).
+transaccion(iguazu,buenosAires,yerba,10000,camion(bmw)).
+transaccion(sanSalvador,rosario,acero,500,avion).
+transaccion(rosario,laPlata,acero,500,avion).
+
+% costoProduccion(Producto,Costo)
+costoProduccion(harina,4).
+costoProduccion(yerba,1).
+costoProduccion(auto,100000).
+costoProduccion(madera,5).
+costoProduccion(acero,100).
+
+% PUNTO 7
+
+% Pensalo vos nomas, es una pregunta teorica, todas los predicados que hicimos son inversibles excepto <distancia>.
+
+% PUNTO 8
+
+% Lo mismo, explicala vos nomas. Polimorfismo es lo que se uso en el predicado <costoTransporte>.
