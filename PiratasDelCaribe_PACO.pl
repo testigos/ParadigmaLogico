@@ -61,12 +61,10 @@ capitanTerrorDelPuerto(CapitanPirata) :-
     capitanPirata(CapitanPirata,_,_,_),
     puerto(Puerto,_),
     abordaTodasLasEmbarcaciones(CapitanPirata,Puerto),
-    forall(capitanPirata(CapitanPirata2,_,_,_),
+    forall((capitanPirata(CapitanPirata2,_,_,_),CapitanPirata \= CapitanPirata2),
             not(abordaTodasLasEmbarcaciones(CapitanPirata2,Puerto))).
 
 abordaTodasLasEmbarcaciones(CapitanPirata,Puerto) :-
-    puerto(Puerto,_),
-    capitanPirata(CapitanPirata,_,_,_),
     forall(viaje(_,Puerto,_,Embarcacion),
             abordar(CapitanPirata,Embarcacion)),
     forall(viaje(Puerto,_,_,Embarcacion),
