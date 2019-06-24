@@ -63,12 +63,12 @@ botinTotal(Pirata,Puerto,Botin) :-
 
 % EJERCICIO 3
 
-pirataDecadente(Pirata) :-
+capitanDecadente(Pirata) :-
     pirata(Pirata,_,Soldados),
     not(abordarEmbarcacion(Pirata,_)),
     Soldados < 10.
 
-pirataTerrorifico(Pirata) :-
+capitanTerrorDelPuerto(Pirata) :-
     pirata(Pirata,_,_),
     forall((puerto(Puerto,_),viaje(Puerto,_,_,Embarcacion)),
                 abordarEmbarcacion(Pirata,Embarcacion)),
