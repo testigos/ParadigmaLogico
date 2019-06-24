@@ -39,15 +39,15 @@ impetuCombativo(barco4,500).
 % EJERCICIO 1
 
 abordarEmbarcacion(Pirata,Embarcacion) :-
-    pirata(Pirata,NombreBarco,Soldados),
-    impetuCombativo(NombreBarco,Impetu),
     ruta(P1,P2,Distancia),
     viaje(P1,P2,ValorMercancia,Embarcacion),
-    poderioPirata(Soldados,Impetu,PoderioPirata),
+    poderioPirata(Pirata,PoderioPirata),
     resistenciaEmbarcacion(Embarcacion,Distancia,ValorMercancia,PoderioEmbarcacion),
     PoderioPirata > PoderioEmbarcacion.
 
-poderioPirata(Soldados,Impetu,PoderioPirata) :-
+poderioPirata(Pirata,PoderioPirata) :-
+    pirata(Pirata,Barco,Soldados),
+    impetuCombativo(Barco,Impetu),
     PoderioPirata is ((Soldados+2)*Impetu).
 
 resistenciaEmbarcacion(galeon(CantCanion),Distancia,_,PoderioEmbarcacion) :-
@@ -102,10 +102,12 @@ capitanExcentrico(Pirata) :-
 
 puedeIr(Pirata,CiudadA,CiudadB) :-
     ruta(CiudadA,CiudadB,Distancia),
-    impetuCombativo(Pirata,Impetu),
-    poderioPirata(Pirata,Impetu,Poderio),
-    Poderio > Distancia.
+    mayorPoderio(Pirata,Distancia).
 puedeIr(Pirata,CiudadA,CiudadB) :-
-    pirata(Pirata,_,_),
-    ruta(PtoMedio,CiudadB,_),
+    ruta(PtoMedio,CiudadB,Distancia),
+    mayorPoderio(Pirata,Distancia),
     puedeIr(Pirata,CiudadA,PtoMedio).
+
+mayorPoderio(Pirata,Distancia) :-
+    poderioPirata(Pirata,Poderio),
+    Poderio > Distancia.
