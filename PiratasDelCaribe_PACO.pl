@@ -70,3 +70,11 @@ abordaTodasLasEmbarcaciones(CapitanPirata,Puerto) :-
             abordar(CapitanPirata,Embarcacion)),
     forall(viaje(Puerto,_,_,Embarcacion),
             abordar(CapitanPirata,Embarcacion)).
+
+capitanExcentrico(CapitanPirata) :-
+    capitanPirata(CapitanPirata,_,_,_),
+    findall(Valor,
+            botin(CapitanPirata,_,Valor),
+            Valores),
+    sumlist(Valores,X),
+    X > 1000.
