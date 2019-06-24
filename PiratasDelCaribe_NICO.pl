@@ -7,21 +7,29 @@ puerto(puerto2,bahiaBlanca).
 puerto(puerto3,florida).
 puerto(puerto4,rioDeJaneiro).
 puerto(puerto5,nicaragua).
+puerto(yatay,argentina).
+puerto(lujan,argentina).
 
-ruta(buenosAires,bahiaBlanca,800).
-ruta(bahiaBlanca,florida,3000).
-ruta(bahiaBlanca,rioDeJaneiro,1500).
-ruta(nicaragua,florida,1000).
+%ruta(buenosAires,bahiaBlanca,800).
+%ruta(bahiaBlanca,florida,3000).
+%ruta(bahiaBlanca,rioDeJaneiro,1500).
+%ruta(nicaragua,florida,1000).
+ruta(yatay,lujan,3).
 
-viaje(puerto1,puerto2,10000,galeon(10)).
-viaje(puerto2,puerto3,80000,carabela(700,60)).
-viaje(puerto4,puerto5,9000,galera(reinoUnido)).
+viaje(yatay,lujan,1000,galeon(25)).
+%viaje(puerto1,puerto2,10000,galeon(10)).
+%viaje(puerto2,puerto3,80000,carabela(700,60)).
+%viaje(puerto4,puerto5,9000,galera(reinoUnido)).
 
-pirata(jackSparrow,barco1,350).
-pirata(nicolas,barco2,800).
-pirata(rodrigo,barco3,900).
-pirata(julian,barco4,400).
+%pirata(jackSparrow,barco1,350).
+%pirata(nicolas,barco2,800).
+%pirata(rodrigo,barco3,900).
+%irata(julian,barco4,400).
+pirata(jorge,holandesErrante,15111).
+pirata(marcos,perlaNegra,0).
 
+impetuCombativo(jorge,31110).
+impetuCombativo(marcos,0).
 impetuCombativo(barco1,100).
 impetuCombativo(barco2,300).
 impetuCombativo(barco3,200).
@@ -68,25 +76,25 @@ capitanDecadente(Pirata) :-
     not(abordarEmbarcacion(Pirata,_)),
     Soldados < 10.
 
-capitanTerrorDelPuerto(Pirata) :-
+capitanTerrorifico(Pirata) :-
     pirata(Pirata,_,_),
     puerto(Puerto,_),
-    abordarTodasEmbarcaciones(Pirata,Puerto),
+    abordaTodo(Pirata,Puerto),
     forall(pirata(Pirata2,_,_),
-            not(abordarTodasEmbarcaciones(Pirata2,Puerto))).
+            not(abordaTodo(Pirata2,Puerto))).
 
-abordarTodasEmbarcaciones(Pirata,Puerto) :-
+abordaTodo(Pirata,Puerto) :-
     puerto(Puerto,_),
+    pirata(Pirata,_,_),
     forall(viaje(Puerto,_,_,Embarcacion),
-            abordarEmbarcacion(Pirata,Embarcacion)),
-    forall(viaje(_,Pirata,_,Embarcacion),
-            abordarEmbarcacion(Pirata,Embarcacion)).
-
+                abordarEmbarcacion(Pirata,Embarcacion)),
+    forall(viaje(_,Puerto,_,Embarcacion),
+                abordarEmbarcacion(Pirata,Embarcacion)).
 
 capitanExcentrico(Pirata) :-
     pirata(Pirata,_,_),
     findall(CantSoldados,viaje(_,_,_,carabela(_,CantSoldados)),SoldadosTotales),
     sumlist(SoldadosTotales,Suma),
-    Suma > 10000.
+    Suma > 1000.
 
 
