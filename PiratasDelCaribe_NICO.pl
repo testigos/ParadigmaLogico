@@ -70,11 +70,16 @@ capitanDecadente(Pirata) :-
 
 capitanTerrorDelPuerto(Pirata) :-
     pirata(Pirata,_,_),
-    forall((puerto(Puerto,_),viaje(Puerto,_,_,Embarcacion)),
-                abordarEmbarcacion(Pirata,Embarcacion)),
-    forall((puerto(Puerto,_),viaje(_,Puerto,_,Embarcacion)),
-                abordarEmbarcacion(Pirata,Embarcacion)).
+    puerto(Puerto,_),
+    abordarTodasEmbarcaciones(Pirata,Puerto),
+    forall(pirata(Pirata2,_,_))
 
+abordarTodasEmbarcaciones(Pirata,Puerto) :-
+    puerto(Puerto,_),
+    forall(viaje(Puerto,_,_,Embarcacion),
+            abordarEmbarcacion(Pirata,Embarcacion)),
+    forall(viaje(_,Pirata,_,Embarcacion),
+            abordarEmbarcacion(Pirata,Embarcacion)).
     
 
 
