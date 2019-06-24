@@ -88,7 +88,9 @@ puedeIr(CapitanPirata,PuertoOrigen,PuertoDestino) :-
 puerto(yatay,argentina).
 puerto(lujan,argentina).
 ruta(yatay,lujan,3).
+ruta(lujan,montevideo,5).
 viaje(yatay,lujan,1000,galeon(25)).
+viaje(lujan,montevideo,1000,galeon(25)).
 capitanPirata(jorge,holandesErrante,15111,31110).
 capitanPirata(marcos,perlaNegra,0,0).
 
