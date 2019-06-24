@@ -9,7 +9,7 @@ puerto(lujan).
 ruta(yatay,lujan,3).
 viaje(yatay,lujan,1000,galeon(25)).
 capitanPirata(jorge,holandesErrante,15111,31110).
-capitanPirata(marcos,perlaNegra,1,1).
+capitanPirata(marcos,perlaNegra,0,0).
 
 % PUNTO 1
 
@@ -60,6 +60,7 @@ capitanDecadente(CapitanPirata) :-
 capitanTerrorDelPuerto(CapitanPirata) :-
     capitanPirata(CapitanPirata,_,_,_),
     puerto(Puerto),
+    abordaTodasLasEmbarcaciones(CapitanPirata,Puerto),
     forall(capitanPirata(CapitanPirata2,_,_,_),
             not(abordaTodasLasEmbarcaciones(CapitanPirata2,Puerto))).
 
