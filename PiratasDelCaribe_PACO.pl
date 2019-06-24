@@ -79,3 +79,13 @@ capitanExcentrico(CapitanPirata) :-
             Valores),
     sumlist(Valores,X),
     X > 1000.
+
+% PUNTO 4
+
+puedeIr(CapitanPirata,PuertoOrigen,PuertoDestino) :-
+    ruta(PuertoOrigen,PuertoDestino,Distancia),
+    poderio(CapitanPirata,Poderio),
+    Distancia < Poderio.
+puedeIr(CapitanPirata,PuertoOrigen,PuertoDestino) :-
+    ruta(CapitanPirata,PuertoMedio,PuertoDestino),
+    puedeIr(CapitanPirata,PuertoOrigen,PuertoMedio).
