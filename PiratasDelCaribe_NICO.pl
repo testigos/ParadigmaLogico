@@ -54,9 +54,9 @@ resistenciaEmbarcacion(galera(espania),_,ValorMercancia,PoderioEmbarcacion) :-
 
 botinTotal(Pirata,Puerto,Botin) :-
     pirata(Pirata,_,_),
-    puerto(Puerto,)
+    puerto(Puerto,_),
     findall(Mercancia,(viaje(_,Puerto,Mercancia,Embarcacion),abordarEmbarcacion(Pirata,Embarcacion)),Mercancias1),
-    findall(Mercancia,(viaje(Puerto,_,Mercancia,Embarcacion)abordarEmbarcacion(Pirata,Embarcacion)),Mercancias2),
+    findall(Mercancia,(viaje(Puerto,_,Mercancia,Embarcacion),abordarEmbarcacion(Pirata,Embarcacion)),Mercancias2),
     sumlist(Mercancias1, Suma1),
     sumlist(Mercancias2, Suma2),
     Botin is (Suma1+Suma2).
@@ -72,7 +72,8 @@ capitanTerrorDelPuerto(Pirata) :-
     pirata(Pirata,_,_),
     puerto(Puerto,_),
     abordarTodasEmbarcaciones(Pirata,Puerto),
-    forall(pirata(Pirata2,_,_))
+    forall(pirata(Pirata2,_,_),
+            not(abordarTodasEmbarcaciones(Pirata2,Puerto))).
 
 abordarTodasEmbarcaciones(Pirata,Puerto) :-
     puerto(Puerto,_),
@@ -80,6 +81,12 @@ abordarTodasEmbarcaciones(Pirata,Puerto) :-
             abordarEmbarcacion(Pirata,Embarcacion)),
     forall(viaje(_,Pirata,_,Embarcacion),
             abordarEmbarcacion(Pirata,Embarcacion)).
-    
+
+
+capitanExcentrico(Pirata) :-
+    pirata(Pirata,_,_),
+    findall(CantSoldados,viaje(_,_,_,carabela(_,CantSoldados)),SoldadosTotales),
+    sumlist(SoldadosTotales,Suma),
+    Suma > 10000.
 
 
