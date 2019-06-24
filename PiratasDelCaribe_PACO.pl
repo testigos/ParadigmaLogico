@@ -1,11 +1,11 @@
-% puertos(Nombre).
+% puertos(Nombre,Pais).
 % ruta(Puerto1,Puerto2,Distancia).
 % viaje(PuertoOrigen,PuertoDestino,ValorMercancia,Embarcacion). %% SOLO SE HACEN VIAJES ENTRE PUERTOS UNIDOS POR UNA RUTA
 % functores de embarcacion: galeon(CantidadCaniones). carabela(CapacidadBodega,CantidadSoldados). galera(PaisBandera).
 % capitanPirata(Nombre,NombreBarco,CantidadPiratas,ImpetuCombativo).
 
-puerto(yatay).
-puerto(lujan).
+puerto(yatay,argentina).
+puerto(lujan,argentina).
 ruta(yatay,lujan,3).
 viaje(yatay,lujan,1000,galeon(25)).
 capitanPirata(jorge,holandesErrante,15111,31110).
@@ -37,7 +37,7 @@ resistencia(_,ValorMercancia,galera(PaisBandera),Resistencia) :-
 % PUNTO 2
 
 botin(CapitanPirata,Puerto,Valor) :-
-    puerto(Puerto),
+    puerto(Puerto,_),
     capitanPirata(CapitanPirata,_,_,_),
     findall(ValorMercancia1,
             (viaje(_,Puerto,ValorMercancia1,Embarcacion),abordar(CapitanPirata,Embarcacion)),
@@ -59,13 +59,14 @@ capitanDecadente(CapitanPirata) :-
 
 capitanTerrorDelPuerto(CapitanPirata) :-
     capitanPirata(CapitanPirata,_,_,_),
-    puerto(Puerto),
+    puerto(Puerto,_),
     abordaTodasLasEmbarcaciones(CapitanPirata,Puerto),
     forall(capitanPirata(CapitanPirata2,_,_,_),
             not(abordaTodasLasEmbarcaciones(CapitanPirata2,Puerto))).
 
 abordaTodasLasEmbarcaciones(CapitanPirata,Puerto) :-
-    puerto(Puerto),
+    puerto(Puerto,_),
+    capitanPirata(CapitanPirata,_,_,_),
     forall(viaje(_,Puerto,_,Embarcacion),
             abordar(CapitanPirata,Embarcacion)),
     forall(viaje(Puerto,_,_,Embarcacion),
