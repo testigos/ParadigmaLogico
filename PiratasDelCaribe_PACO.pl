@@ -6,10 +6,10 @@
 
 puerto(yatay).
 puerto(lujan).
-ruta(yatay,lujan,400).
+ruta(yatay,lujan,3).
 viaje(yatay,lujan,1000,galeon(25)).
-capitanPirata(jorge,holandesErrante,50,125).
-capitanPirata(marcos,perlaNegra,20,85).
+capitanPirata(jorge,holandesErrante,15111,31110).
+capitanPirata(marcos,perlaNegra,1,1).
 
 % PUNTO 1
 
@@ -48,3 +48,24 @@ botin(CapitanPirata,Puerto,Valor) :-
             ListaValores2),
     sumlist(ListaValores2,Valor2),
     Valor is (Valor1 + Valor2).
+
+% PUNTO 3
+
+capitanDecadente(CapitanPirata) :-
+    capitanPirata(CapitanPirata,_,CantidadPiratas,_),
+    forall(viaje(_,_,_,Embarcacion),
+            not(abordar(CapitanPirata,Embarcacion))),
+    CantidadPiratas < 10.
+
+capitanTerrorDelPuerto(CapitanPirata) :-
+    capitanPirata(CapitanPirata,_,_,_),
+    puerto(Puerto),
+    forall(capitanPirata(CapitanPirata2,_,_,_),
+            not(abordaTodasLasEmbarcaciones(CapitanPirata2,Puerto))).
+
+abordaTodasLasEmbarcaciones(CapitanPirata,Puerto) :-
+    puerto(Puerto),
+    forall(viaje(_,Puerto,_,Embarcacion),
+            abordar(CapitanPirata,Embarcacion)),
+    forall(viaje(Puerto,_,_,Embarcacion),
+            abordar(CapitanPirata,Embarcacion)).
