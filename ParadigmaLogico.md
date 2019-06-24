@@ -20,7 +20,7 @@ Parciales:
 
 1) Transporte (DificultadNICO: 8/10) (DificultadPACO: 8.5/10) https://docs.google.com/document/d/1CiUO780HyMeJfs5HzP9qlGfnyFPkG_mqKeSXzfXLT0Q/edit             
 
-2) Piratas (DificultadNICO: ) (DificultadPACO: ) https://docs.google.com/document/d/1GY_SXqftocWf2jEUehfjE1VPwD726GUojlSqXV8zEug/
+2) Piratas (DificultadNICO: 8/10) (DificultadPACO: 7.5/10) https://docs.google.com/document/d/1GY_SXqftocWf2jEUehfjE1VPwD726GUojlSqXV8zEug/
 
 3) https://docs.google.com/document/d/14gV9kXSAZmUjH8P6IQ2on19kJtuSwlHIDhmGVVNot5k/
 

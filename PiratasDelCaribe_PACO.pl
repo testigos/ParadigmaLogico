@@ -1,16 +1,3 @@
-% puertos(Nombre,Pais).
-% ruta(Puerto1,Puerto2,Distancia).
-% viaje(PuertoOrigen,PuertoDestino,ValorMercancia,Embarcacion). %% SOLO SE HACEN VIAJES ENTRE PUERTOS UNIDOS POR UNA RUTA
-% functores de embarcacion: galeon(CantidadCaniones). carabela(CapacidadBodega,CantidadSoldados). galera(PaisBandera).
-% capitanPirata(Nombre,NombreBarco,CantidadPiratas,ImpetuCombativo).
-
-puerto(yatay,argentina).
-puerto(lujan,argentina).
-ruta(yatay,lujan,3).
-viaje(yatay,lujan,1000,galeon(25)).
-capitanPirata(jorge,holandesErrante,15111,31110).
-capitanPirata(marcos,perlaNegra,0,0).
-
 % PUNTO 1
 
 abordar(CapitanPirata,Embarcacion) :-
@@ -61,12 +48,10 @@ capitanTerrorDelPuerto(CapitanPirata) :-
     capitanPirata(CapitanPirata,_,_,_),
     puerto(Puerto,_),
     abordaTodasLasEmbarcaciones(CapitanPirata,Puerto),
-    forall(capitanPirata(CapitanPirata2,_,_,_),
+    forall((capitanPirata(CapitanPirata2,_,_,_),CapitanPirata \= CapitanPirata2),
             not(abordaTodasLasEmbarcaciones(CapitanPirata2,Puerto))).
 
 abordaTodasLasEmbarcaciones(CapitanPirata,Puerto) :-
-    puerto(Puerto,_),
-    capitanPirata(CapitanPirata,_,_,_),
     forall(viaje(_,Puerto,_,Embarcacion),
             abordar(CapitanPirata,Embarcacion)),
     forall(viaje(Puerto,_,_,Embarcacion),
@@ -87,5 +72,32 @@ puedeIr(CapitanPirata,PuertoOrigen,PuertoDestino) :-
     poderio(CapitanPirata,Poderio),
     Distancia < Poderio.
 puedeIr(CapitanPirata,PuertoOrigen,PuertoDestino) :-
-    ruta(CapitanPirata,PuertoMedio,PuertoDestino),
+    ruta(PuertoMedio,PuertoDestino,Distancia),
+    poderio(CapitanPirata,Poderio),
+    Distancia < Poderio,
     puedeIr(CapitanPirata,PuertoOrigen,PuertoMedio).
+
+% PUNTO 5 
+
+% puertos(Nombre,Pais).
+% ruta(Puerto1,Puerto2,Distancia).
+% viaje(PuertoOrigen,PuertoDestino,ValorMercancia,Embarcacion). %% SOLO SE HACEN VIAJES ENTRE PUERTOS UNIDOS POR UNA RUTA
+% functores de embarcacion: galeon(CantidadCaniones). carabela(CapacidadBodega,CantidadSoldados). galera(PaisBandera).
+% capitanPirata(Nombre,NombreBarco,CantidadPiratas,ImpetuCombativo).
+
+puerto(yatay,argentina).
+puerto(lujan,argentina).
+ruta(yatay,lujan,3).
+viaje(yatay,lujan,1000,galeon(25)).
+capitanPirata(jorge,holandesErrante,15111,31110).
+capitanPirata(marcos,perlaNegra,0,0).
+
+% Pensa los ejemplos que te pide vos papa.
+
+% PUNTO 6
+
+% Pensala vos nomas, es una pregunta teorica.
+
+% PUNTO 7
+
+% Lo mismo que la anterior, explicalo vos nomas. Polimorfismo es lo que se uso en el predicado <resistencia>.
