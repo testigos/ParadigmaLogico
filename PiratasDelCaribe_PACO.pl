@@ -9,6 +9,7 @@ puerto(lujan).
 ruta(yatay,lujan,400).
 viaje(yatay,lujan,1000,galeon(25)).
 capitanPirata(jorge,holandesErrante,50,125).
+capitanPirata(marcos,perlaNegra,20,85).
 
 % PUNTO 1
 
@@ -37,6 +38,7 @@ resistencia(_,ValorMercancia,galera(PaisBandera),Resistencia) :-
 
 botin(CapitanPirata,Puerto,Valor) :-
     puerto(Puerto),
+    capitanPirata(CapitanPirata,_,_,_),
     findall(ValorMercancia1,
             (viaje(_,Puerto,ValorMercancia1,Embarcacion),abordar(CapitanPirata,Embarcacion)),
             ListaValores1),
