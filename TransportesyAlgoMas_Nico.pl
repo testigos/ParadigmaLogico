@@ -98,6 +98,6 @@ ciudadMonopolica(Ciudad) :-
 distancia(CiudadA,CiudadB,Distancia) :-
     ruta(CiudadA,CiudadB,Distancia).
 distancia(CiudadA,CiudadB,Distancia) :-
-    ruta(CiudadA,PtoMedio,Distancia1),
-    distancia(PtoMedio,CiudadB,Distancia2),
+    ruta(PtoMedio,CiudadA,Distancia1),
+    distancia(CiudadB,PtoMedio,Distancia2),
     Distancia is (Distancia1+Distancia2).
