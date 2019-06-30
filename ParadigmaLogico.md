@@ -35,3 +35,15 @@ Parciales:
 8) https://docs.google.com/document/d/1d-XgMzI5mL2VdLZNkkqrebjwyVDLA0ExilAA08b2QBU/
 
 9) Furia (Dificultad: ) https://docs.google.com/document/d/1omdRN-eP55lkusU-iT43EhN_whK885tgFrJBE1zUwfQ/
+
+10) https://docs.google.com/document/d/1m3rnd3Un987VSmVqhgXHH2BL5e__8phQfuUbzlgl-4o/mobilebasic
+
+11) https://docs.google.com/document/d/1eeN6Jzub6yJoC0eJecwSDdTXj-5-lXCYCCvNWvilAQk/mobilebasic
+
+12) https://docs.google.com/document/d/1d-XgMzI5mL2VdLZNkkqrebjwyVDLA0ExilAA08b2QBU/mobilebasic
+
+13) https://docs.google.com/document/d/1BE6MIKzMcQMh_D27sIM3JkcOaZRDjdqAMwqD_udM9ro/mobilebasic#
+
+14) https://docs.google.com/document/d/1-7q3lgJS3uhgZsPqybxrFpzPUJIdsH65Kxf6IIidY2E/mobilebasic
+
+15) https://docs.google.com/document/d/1ceEtqSEAgIpGZ-qdx4qhevLr7nmU80H9Dn4DD5y1Rp4/mobilebasic
