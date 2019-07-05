@@ -34,8 +34,9 @@ porcentaje(rojo,10).
 contieneIngrediente(Comida,Ingrediente,Cantidad) :-
     lleva(Comida,Ingrediente,Cantidad).
 contieneIngrediente(Comida,X,Cantidad):-
-    lleva(Comida,Ingrediente,Cantidad),
-    contieneIngrediente(Ingrediente,X,Cantidad).
+    lleva(Comida,Ingrediente,CantidadA),
+    contieneIngrediente(Ingrediente,X,CantidadB),
+    Cantidad is (CantidadA*CantidadB).
 
 comparteElemento(Comida1,Comida2) :-
     lleva(Comida1,Ingrediente,C1),
@@ -64,35 +65,38 @@ indispensable(Ingrediente) :-
                 contieneIngrediente(Comida2,Ingrediente,_)).
 
 % EJERCICIO 4
-/*
-caloriasTotal(Producto,Calorias) :-
-    lleva(Componente,_,_),
-    ingredientesDeUnaComida(Producto,Ingredientes),
-    maplist(caloriasTotal,Ingredientes,Calorizados),
-    sumlist(Calorizados, Calorias).
-*/
-loQueLlevaUnaComida(Comida,Ingredientes) :-
-    lleva(Comida,_,_),
-    findall(Ingrediente,lleva(Comida,Ingrediente,_),Ingredientes).
 
-caloriasTotal(Producto,Calorias) :-
-    contieneIngrediente(Producto,_,_),
-    loQueLlevaUnaComida(Producto,Ingredientes),
-    maplist(caloriasTotal,Ingredientes,Calorizados),
-    sumlist(Calorizados, Calorias).
-    
-caloriasTotal(Ingrediente,Calorias) :-
-    lleva(_,Ingrediente,Cantidad),
-    not(lleva(Ingrediente,_,_)),
+caloriasTotal(Producto,Cals) :-
+    findall(Caloria,(contieneIngrediente(Producto,SubProducto,Cantidad),caloriasProd(SubProducto,Caloria,Cantidad)),Calorias),
+    sumlist(Calorias,Cals).
+
+caloriasProd(Producto,Calorias,Cantidad) :-
+    ingredienteAPartirDeNombre(Producto, Ingrediente),
     calculoCalorias(Ingrediente,Cals),
     Calorias is (Cantidad*Cals).
 
-calculoCalorias(Ingrediente,Calorias) :-
-    ingrediente(animal(Ingrediente,Calorias)).
-calculoCalorias(Ingrediente,Calorias) :-
-    ingrediente(vegetal(Ingrediente,Color,CalSinCuentas)),
+ingredienteAPartirDeNombre(NombreIng, Ingrediente):-
+	ingrediente(Ingrediente),
+	ingredientePorNombre(NombreIng, Ingrediente).
+
+ingredientePorNombre(Nombre, panificacion(Nombre, _, _)).
+ingredientePorNombre(Nombre, animal(Nombre, _)).
+ingredientePorNombre(Nombre, vegetal(Nombre, _, _)).
+
+
+calculoCalorias(animal(_,Calorias),Calorias).
+calculoCalorias(vegetal(_,Color,CalSinCuentas),Calorias) :-
     porcentaje(Color,Ajuste),
     Calorias is (CalSinCuentas - (CalSinCuentas * Ajuste / 100)).
-calculoCalorias(Ingrediente,Calorias) :-
-    ingrediente(panificacion(Ingrediente,A,B)),
+calculoCalorias(panificacion(_,A,B),Calorias) :-
     Calorias is (A*B).
+
+
+% EJERCICIO 5
+
+bomba(Comida) :-
+    carta(Comida),
+    caloriasTotal(Comida,X),
+    forall((carta(Comida2), Comida2 \= Comida, caloriasTotal(Comida2,Y)),
+                X > Y).
+
