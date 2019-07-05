@@ -95,3 +95,7 @@ bomba(Comida) :-
     carta(Comida),
     forall((carta(Comida2),Comida \= Comida2,caloriasTotal(Comida,Cal1),caloriasTotal(Comida2,Cal2)),
             Cal1 > Cal2).
+
+% PUNTO 6
+
+% TU VIEJA VA A RESPONDER ESTA PREGUNTA
