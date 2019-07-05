@@ -26,16 +26,13 @@ porcentaje(rojo,10).
 comparteElemento(Comida1,Comida2) :-
     carta(Comida1),
     carta(Comida2),
-    lleva(Comida1,Comp,Cant1),
-    lleva(Comida2,Comp,Cant2),
+    elemento(Comida1,Comp,Cant1),
+    elemento(Comida2,Comp,Cant2),
     Cant1 \= Cant2.
 
-
-
-comparteElemento(Comida1,Comida2) :-
-    carta(Comida1),
-    carta(Comida2),
-    lleva(Comida1,Comp1,_),
-    lleva(Comida2,Comp2,Cant2),
-    lleva(Comp1,Comp2,Cant1),
-    Cant1 \= Cant2.
+elemento(Comida,Elemento,Cantidad) :-
+    lleva(Comida,Elemento,Cantidad).
+elemento(Comida,Componente,Cantidad) :-
+    lleva(Comida,Elemento,_),
+    elemento(Elemento,Componente,Cantidad),
+    Componente \= Elemento.
