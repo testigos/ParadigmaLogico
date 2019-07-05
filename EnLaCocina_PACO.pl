@@ -89,3 +89,9 @@ caloriasIngrediente(vegetal(_,Color,Cantidad),Calorias) :-
     porcentaje(Color,N),
     Calorias is (Cantidad - (Cantidad *  N / 100)).
 
+% PUNTO 5
+
+bomba(Comida) :-
+    carta(Comida),
+    forall((carta(Comida2),Comida \= Comida2,caloriasTotal(Comida,Cal1),caloriasTotal(Comida2,Cal2)),
+            Cal1 > Cal2).
