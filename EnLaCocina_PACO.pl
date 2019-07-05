@@ -46,16 +46,18 @@ solito(Comida) :-
     not(llevaDosOMasIng(Comida)).
 
 llevaDosOMasIng(Comida) :-
-    lleva(Comida,Ing1,_),
-    lleva(Comida,Ing2,_),
-    Ing1 \= Ing2.
+    elemento(Comida,Ingrediente,_),
+    queIngredienteEs(Ingrediente,_),
+    elemento(Comida,Ingrediente2,_),
+    queIngredienteEs(Ingrediente2,_),
+    Ingrediente \= Ingrediente2.
 
 % PUNTO 3
 
-indispensable(Componente) :-
-    elemento(_,Componente,_),
+indispensable(Ingrediente) :-
+    queIngredienteEs(Ingrediente,_),
     forall(carta(Comida),
-            elemento(Comida,Componente,_)).
+            elemento(Comida,Ingrediente,_)).
 
 % PUNTO 4
 
