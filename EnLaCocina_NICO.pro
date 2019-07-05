@@ -57,20 +57,24 @@ contieneIngrediente(Comida,X):-
 ingredientesDeUnaComida(Comida,Ingredientes) :-
     carta(Comida),
     findall(Ingrediente,contieneIngrediente(Comida,Ingrediente),Ingredientes).
-/*
+
 comparteElemento(Comida1,Comida2) :-
-    lleva(Comida1,Ingrediente,_),
-    lleva(Comida2,Ingrediente,_),
-    Comida1 \= Comida2.
-*/
+    lleva(Comida1,Ingrediente,C1),
+    lleva(Comida2,Ingrediente,C2),
+    Comida1 \= Comida2,
+    C1 \= C2.
+
 comparteElemento(Comida1,Comida2) :-
-    ingredientesDeUnaComida(Comida1,Ingredientes),
-    ingredientesDeUnaComida(Comida2,Ingredientes2),
-    member(Producto,Ingredientes),
-    member(Producto,Ingredientes2),
-    Comida1 \= Comida2.
+    contieneIngrediente(Comida1,Producto),
+    contieneIngrediente(Comida2,Producto),
+    Comida1 \= Comida2,
+    distintaCantidad(Comida1,Comida2,Producto).
 
 
+distintaCantidad(C1,C2,Producto) :-
+    lleva(Comida1,Producto,Cant),
+    lleva(Comida2,Producto,Cant2),
+    Cant \= Cant2.
 % EJERCICIO 2
 
 solito(Producto) :-
@@ -86,6 +90,4 @@ indispensable(Ingrediente) :-
     forall((carta(Comida2), Comida \= Comida2),
                 contieneIngrediente(Comida2,Ingrediente)).
 
-
-    
-
+% EJERCICIO 5
