@@ -58,8 +58,6 @@ contieneIngrediente(Comida,X):-
     lleva(Comida,Ingrediente,_),
     contieneIngrediente(Ingrediente,X).
 
-
-
 % EJERCICIO 2
 
 solito(Producto) :-
