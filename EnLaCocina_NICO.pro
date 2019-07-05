@@ -71,13 +71,13 @@ caloriasTotal(Producto,Calorias) :-
     maplist(caloriasTotal,Ingredientes,Calorizados),
     sumlist(Calorizados, Calorias).
 */
-ingredientesDeUnaComida(Comida,Ingredientes) :-
+loQueLlevaUnaComida(Comida,Ingredientes) :-
     lleva(Comida,_,_),
     findall(Ingrediente,lleva(Comida,Ingrediente,_),Ingredientes).
 
 caloriasTotal(Producto,Calorias) :-
     contieneIngrediente(Producto,_,_),
-    ingredientesDeUnaComida(Producto,Ingredientes),
+    loQueLlevaUnaComida(Producto,Ingredientes),
     maplist(caloriasTotal,Ingredientes,Calorizados),
     sumlist(Calorizados, Calorias).
     
