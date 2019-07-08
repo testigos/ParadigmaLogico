@@ -62,4 +62,12 @@ ganador(EqGanador,EqPerdedor,Fase) :-
     length(NombresGanador,GolesGanador),
     length(NombresPerdedor,GolesPerdedor),
     GolesGanador > GolesPerdedor.
-    
+
+% PUNTO 3
+
+invicto(Equipo) :-
+    equipo(Equipo,_),
+    not(ganador(_,Equipo,grupos)).
+
+% PUNTO 4
+
