@@ -36,3 +36,15 @@ fase(grupos).
 fase(cuartos).
 fase(semi).
 fase(final).
+
+% PUNTO 1
+
+partidoSinGoles(Equipo) :-
+    grupo(_,EquiposDelGrupo),
+    member(Equipo,EquiposDelGrupo),
+    member(Equipo2,EquiposDelGrupo),
+    Equipo \= Equipo2,
+    forall((equipo(Equipo,Jugadores),member(Jugador,Jugadores)),
+            not(gol(Jugador,Equipo2,_,grupos))),
+    forall((equipo(Equipo2,Jugadores2),member(Jugador2,Jugadores2)),
+            not(gol(Jugador2,Equipo,_,grupos))).
