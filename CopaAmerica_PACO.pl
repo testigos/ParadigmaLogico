@@ -40,11 +40,26 @@ fase(final).
 % PUNTO 1
 
 partidoSinGoles(Equipo) :-
-    grupo(_,EquiposDelGrupo),
-    member(Equipo,EquiposDelGrupo),
-    member(Equipo2,EquiposDelGrupo),
-    Equipo \= Equipo2,
+    sonDelMismoGrupo(Equipo,Equipo2),
     forall((equipo(Equipo,Jugadores),member(Jugador,Jugadores)),
             not(gol(Jugador,Equipo2,_,grupos))),
     forall((equipo(Equipo2,Jugadores2),member(Jugador2,Jugadores2)),
             not(gol(Jugador2,Equipo,_,grupos))).
+
+sonDelMismoGrupo(Eq1,Eq2) :-
+    grupo(_,EquiposDelGrupo),
+    member(Eq1,EquiposDelGrupo),
+    member(Eq2,EquiposDelGrupo),
+    Eq1 \= Eq2.
+
+% PUNTO 2
+
+ganador(EqGanador,EqPerdedor,Fase) :-
+    equipo(EqGanador,JugGanador),
+    equipo(EqPerdedor,JugPerdedor),
+    findall(Nombre,(member(Nombre,JugGanador),gol(Nombre,EqPerdedor,_,Fase)),NombresGanador),
+    findall(Nombre,(member(Nombre,JugPerdedor),gol(Nombre,EqGanador,_,Fase)),NombresPerdedor),
+    length(NombresGanador,GolesGanador),
+    length(NombresPerdedor,GolesPerdedor),
+    GolesGanador > GolesPerdedor.
+    
