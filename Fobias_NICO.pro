@@ -86,6 +86,3 @@ personaSana(Persona) :-
     esPersona(Persona),
     forall(fobia(Persona,Fobia),
                 (psicologo(Psicologo,_),puedeAtender(Persona,Psicologo,Fobia))).
-
-
-    
