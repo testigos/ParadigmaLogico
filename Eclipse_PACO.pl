@@ -30,8 +30,7 @@ lugares1(Ciudad) :-
 
 pasadasLas1742(Hora,_) :-
     Hora > 17.
-pasadasLas1742(Hora,Minutos) :-
-    Hora = 17,
+pasadasLas1742(17,Minutos) :-
     Minutos > 42.
 
 % PUNTO 2
@@ -64,8 +63,7 @@ duraMas(Ciudad) :-
 
 mayorDuracion(Min,_,Min2,_) :-
     Min > Min2.
-mayorDuracion(Min,Seg,Min2,Seg2) :-
-    Min = Min2,
+mayorDuracion(Min,Seg,Min,Seg2) :-
     Seg > Seg2.
 
 % PUNTO 5
